@@ -1,0 +1,92 @@
+.toggle-button {
+  width: 200px;
+  margin: 10px 0;
+
+  transition: transform 0.3s;
+  transform: scale(var(--scale, 1)) translateZ(0);
+  &:active {
+    --scale: 0.97;
+  }
+
+  input {
+    display: none;
+
+    & + label {
+      display: grid;
+      cursor: pointer;
+      background: linear-gradient(155deg, #f2f3f5, #ffffff);
+      box-shadow: -4px -4px 6px #fff, 4px 4px 6px #dde2ec;
+      border-radius: 20px;
+      height: 40px;
+      min-width: 208px;
+      position: relative;
+
+      grid-template-columns: 150px 50px;
+
+      & > .toggle-label {
+        color: (#000);
+        padding: 10px 0 10px 30px;
+        line-height: 20px;
+        font-size: 16px;
+      }
+
+      & > .toggle-slider {
+        // Use flexbox for centering elements
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        // background-color: red; // For debugging
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        opacity: 1;
+
+        // Slider background
+        &:before {
+          position: absolute;
+          content: "";
+          height: 20px;
+          width: 40px;
+          border-radius: 11px;
+          background-color: var(--sliderColor, green);
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+
+        // Slider circle
+        &:after {
+          position: relative;
+          content: "";
+          height: 22px;
+          width: 22px;
+          left: var(--offset, 0px);
+          bottom: 0px;
+          border-radius: 50%;
+          background: linear-gradient(155deg, #f2f3f5, #ffffff);
+          box-shadow: -2px -2px 3px var(--shadowLeftOff, #fff),
+            2px 2px 3px var(--shadowRightOff, #dde2ec);
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+      }
+    }
+
+    // When toggled on
+    &:not(:checked) {
+      & + label {
+        --offset: -12px;
+        --sliderColor: #ccc;
+        --shadowRightOff: transparent;
+      }
+    }
+    // When toggled off
+    &:checked {
+      & + label {
+        --offset: 12px;
+        --sliderColor: rgb(70, 177, 209);
+        --shadowLeftOff: transparent;
+      }
+    }
+  }
+}

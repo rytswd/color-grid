@@ -1,0 +1,47 @@
+.text-input {
+  width: 208px;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "label label label"
+    "input input submit";
+
+  & > label {
+    grid-area: label;
+    font-size: 16px;
+    color: black;
+    margin: 0 0 13px 14px;
+    font-weight: 300;
+  }
+  & > input[type="text"] {
+    grid-area: input;
+    padding: 8px 60px 8px 14px;
+    border: none;
+    border-radius: 26px;
+    width: 131px;
+    background: linear-gradient(155deg, #ffffff, #f2f3f5);
+    box-shadow: inset 4px 4px 6px #dde2ec, inset -4px -4px 6px #fff;
+    // width: 100px;
+  }
+  & > input[type="submit"] {
+    margin-left: auto;
+    grid-area: submit;
+    opacity: 1;
+    width: 60px;
+    border-radius: 26px;
+    // background-color: red;
+
+    border: none;
+    background: linear-gradient(155deg, var(--on, #f2f3f5), #ffffff);
+    box-shadow: 4px 4px 6px #dde2ec;
+
+    transition: transform 0.3s;
+    transform: scale(var(--scale, 1)) translateZ(0);
+    &:active {
+      --on: #d7dde9dc;
+      --scale: 0.97;
+    }
+  }
+}
